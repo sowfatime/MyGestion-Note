@@ -1,0 +1,27 @@
+.mainContainer
+{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.stylisation{
+  height: 15vh;
+  width: 100%;
+  position: relative;
+  margin-bottom: -2.5vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
+}
+
+.style-droite{
+  background-color: #a0aab0;
+  border-radius: 0vh 150vh 0 0vh;
+}
+
+.style-gauche{
+  background-color: #a0aab0;
+  border-radius: 150vh 0 0vh 0vh;
+}

@@ -1,0 +1,70 @@
+<div class="container">
+  <app-header></app-header>
+  <main class="mt-3">
+    <a class="btn btn-sm btn-primary" routerLink="/ajouter-evaluation">Ajouter évaluation</a>
+
+    <div class="card border border-0 mt-3">
+
+      <label for="matieres" class="form-label">Matière</label>
+      <select class="form-select form-select-sm" aria-label="Small select example"
+       [(ngModel)]="selectMatiereValue" (change)="selectMatiereValueFn()">
+        <option *ngFor="let matiere of allMatiereByIdProf" [ngValue]="matiere.id">
+          {{matiere.nom}}
+        </option>
+      </select>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Classe</th>
+            <th scope="col" class="text-center">Date</th>
+            <th scope="col" class="text-center">Type</th>
+            <th scope="col" class="text-center">Semestre</th>
+            <th scope="col" class="text-center">Etat</th>
+            <th scope="col" class="text-center">Année scolaire</th>
+            <th scope="col" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="!selectMatiereValue">
+            <tr *ngFor="let evaluation of regroupEvaluationByProf">
+              <td class="text-center">Seconde </td>
+              <td class="text-center">Premiere </td>
+              <td class="text-center">Terminal </td>
+              <td class="text-center">{{ evaluation.date | date:'dd/MM/YYYY' }}</td>
+              <td class="text-center">{{ evaluation.type }}</td>
+              <td class="text-center">{{ evaluation.semestre }}</td>
+              <td class="text-center">{{ evaluation.etat }}</td>
+              <td class="text-center">{{ evaluation.annescollaire }}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-warning" routerLink="/modifier-evaluation">Modifier</button>
+                <button class="btn btn-sm btn-danger ms-3">Reporter</button>
+              </td>
+            </tr>
+          </ng-container>
+
+          <ng-container *ngIf="selectMatiereValue">
+            <tr *ngFor="let evaluation of listeEvaluationByMatiere">
+              <td class="text-center">Seconde L</td>
+              <td class="text-center">{{ evaluation.date | date:'dd/MM/YYYY' }}</td>
+              <td class="text-center">{{ evaluation.type }}</td>
+              <td class="text-center">{{ evaluation.semestre }}</td>
+              <td class="text-center">{{ evaluation.etat }}</td>
+              <td class="text-center">{{ evaluation.annescollaire }}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-warning" routerLink="/modifier-evaluation">Modifier</button>
+                <button class="btn btn-sm btn-danger ms-3">Reporter</button>
+              </td>
+            </tr>
+          </ng-container>
+
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+  
+
+  <app-footer></app-footer>
+
+</div>

@@ -1,0 +1,27 @@
+<main class="mainContainer">
+  <div class="col-5 h-70">
+    <div class="container shadow py-3 h-100 d-flex justify-content-center align-items-center">
+      <div class="col-8">
+        <h1 class="text-center fw-bold mb-5">Connectez-vous</h1>
+        <form action="">
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Adresse email:</label>
+            <input type="email" name="email" class="form-control" id="emailInput" [(ngModel)]="email">
+
+          </div>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">Mot de passe : </label>
+            <input type="password" name="password" class="form-control" id="passwordInput" [(ngModel)]="password">
+          </div>
+          <div class="btn-auth text-center">
+           &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-secondary me-3" (click)="login()">Se connecter</button>
+          </div>
+        </form>
+        <div class="stylisation">
+          <div class="style-droite grid-item"></div>
+          <div class="style-gauche grid-item"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</main>

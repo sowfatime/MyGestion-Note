@@ -1,0 +1,89 @@
+<div class="container">
+  <app-header></app-header>
+  <main class="mt-3" id="classe">
+    <!-- Button ajouter classe modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajoutClasse">
+      ajouter classe
+    </button>
+
+    <div class="card border border-0 mt-3">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Nom de la classe</th>
+            <th scope="col" class="text-center">nombre d'apprenant</th>
+            <th scope="col" class="text-center">Année scolaire</th>
+            <th scope="col" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let classe of classes">
+            <td class="text-center">{{ classe.nom}}</td>
+            <td class="text-center">{{ classe.apprenants.length }}</td>
+            <td class="text-center">{{ classe.annescolaire }}</td>
+            <td class="text-center">
+              <!-- Button ajouter classe modal -->
+              <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
+                data-bs-target="#modifierClasse" (click)="ClasseToUpdate(classe.id)">
+                Modifier classe
+              </button>
+              <button class="btn btn-sm btn-danger ms-3" (click)="removeClasse(classe.id)">supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <img src="https://images.theconversation.com/files/459523/original/file-20220425-31363-few7tm.jpg?ixlib=rb-1.1.0&rect=4%2C8%2C994%2C640&q=45&auto=format&w=926&fit=clip" alt="">
+
+  </main>
+  
+
+  <app-footer></app-footer>
+
+</div>
+
+
+<!-- Modal ajouter classe-->
+<div class="modal fade" id="ajoutClasse" tabindex="-1" aria-labelledby="ajoutClasseLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ajoutClasseLabel">Ajouter classe</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="nomClasse" class="form-label">Nom de la classe</label>
+          <input type="text" name="nomClasse" class="form-control" id="nomClasse" [(ngModel)]="nomClass">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="clearInput()">annuler</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addClasse()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal modifier classe-->
+<div class="modal fade" id="modifierClasse" tabindex="-1" aria-labelledby="modifierClasseLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modifierClasseLabel">Modifier classe</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="nomClasse" class="form-label">Nom de la classe</label>
+          <input type="text" name="nomClasse" class="form-control" id="nomClasse" [(ngModel)]="nomClass">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="clearInput()">annuler</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateClasse()">Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>
